@@ -1,24 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>Client</class>
- <widget class="QMainWindow" name="Client" >
-  <property name="geometry" >
+ <widget class="QMainWindow" name="Client">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>1223</width>
+    <height>492</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Client</string>
   </property>
-  <widget class="QMenuBar" name="menuBar" />
-  <widget class="QToolBar" name="mainToolBar" />
-  <widget class="QWidget" name="centralWidget" />
-  <widget class="QStatusBar" name="statusBar" />
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QPushButton" name="btnConnection">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>20</y>
+      <width>101</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Connection</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="txtNomUtilisateur">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>30</y>
+      <width>161</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblNomUtilisateur">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>30</y>
+      <width>121</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Nom d'utilisateur</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnSelectionner">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>130</y>
+      <width>101</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Sélectionner</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnAbandonner">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>170</y>
+      <width>101</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Abandonner</string>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="gbMesTaches">
+    <property name="geometry">
+     <rect>
+      <x>720</x>
+      <y>80</y>
+      <width>501</width>
+      <height>271</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Mes Tâches</string>
+    </property>
+    <widget class="QLabel" name="lblBonus">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
+       <y>30</y>
+       <width>61</width>
+       <height>15</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Bonus</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lblNomTache">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>30</y>
+       <width>121</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Nom de la Tâche</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lblTempsRestant">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>30</y>
+       <width>111</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Temps Restant</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lblDifficulte">
+     <property name="geometry">
+      <rect>
+       <x>230</x>
+       <y>30</y>
+       <width>61</width>
+       <height>15</height>
+      </rect>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>Difficulté</string>
+     </property>
+    </widget>
+    <widget class="QListView" name="lvTache">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>481</width>
+       <height>201</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="gbTacheServeur">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>80</y>
+      <width>601</width>
+      <height>271</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Tâche Disponible</string>
+    </property>
+    <widget class="QLabel" name="lblTempsDisponibilite">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>30</y>
+       <width>121</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Disponible depuis</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lblNomTacheServeur">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>30</y>
+       <width>121</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Nom de la Tâche</string>
+     </property>
+    </widget>
+    <widget class="QListView" name="lvTacheServeur">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>581</width>
+       <height>201</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lblTempsServeur">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>30</y>
+       <width>101</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string> Temps estimé</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lblBonusServeur">
+     <property name="geometry">
+      <rect>
+       <x>530</x>
+       <y>30</y>
+       <width>61</width>
+       <height>15</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Bonus</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lblDifficulteServeur">
+     <property name="geometry">
+      <rect>
+       <x>350</x>
+       <y>30</y>
+       <width>61</width>
+       <height>15</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Difficulté</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="lblBonusTotal">
+    <property name="geometry">
+     <rect>
+      <x>720</x>
+      <y>370</y>
+      <width>81</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Bonus Total</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="txtBonusTotal">
+    <property name="geometry">
+     <rect>
+      <x>860</x>
+      <y>370</y>
+      <width>113</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblTacheTotal">
+    <property name="geometry">
+     <rect>
+      <x>720</x>
+      <y>400</y>
+      <width>141</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Tâche total exécuté</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="txtTacheTotal">
+    <property name="geometry">
+     <rect>
+      <x>860</x>
+      <y>400</y>
+      <width>113</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnTacheTerminer">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>240</y>
+      <width>101</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Tâche terminé</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnDeconnection">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>390</y>
+      <width>101</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Deconnection</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1223</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
  </widget>
- <layoutDefault spacing="6" margin="11" />
- <pixmapfunction></pixmapfunction>
+ <layoutdefault spacing="6" margin="11"/>
  <resources/>
  <connections/>
 </ui>
