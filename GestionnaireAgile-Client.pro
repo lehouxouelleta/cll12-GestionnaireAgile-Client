@@ -5,14 +5,17 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT       += network
 
 TARGET = GestionnaireAgile-Client
 TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        client.cpp
+        client.cpp \
+    thclient.cpp
 
-HEADERS  += client.h
+HEADERS  += client.h \
+    thclient.h
 
 FORMS    += client.ui

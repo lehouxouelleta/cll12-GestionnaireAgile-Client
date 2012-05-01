@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Client</string>
+   <string>Employé</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QPushButton" name="btnConnection">
@@ -143,13 +143,13 @@
       <string>Difficulté</string>
      </property>
     </widget>
-    <widget class="QListView" name="lvTache">
+    <widget class="QTableWidget" name="twMesTache">
      <property name="geometry">
       <rect>
        <x>10</x>
        <y>50</y>
        <width>481</width>
-       <height>201</height>
+       <height>211</height>
       </rect>
      </property>
     </widget>
@@ -192,16 +192,6 @@
       <string>Nom de la Tâche</string>
      </property>
     </widget>
-    <widget class="QListView" name="lvTacheServeur">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>50</y>
-       <width>581</width>
-       <height>201</height>
-      </rect>
-     </property>
-    </widget>
     <widget class="QLabel" name="lblTempsServeur">
      <property name="geometry">
       <rect>
@@ -239,6 +229,16 @@
      </property>
      <property name="text">
       <string>Difficulté</string>
+     </property>
+    </widget>
+    <widget class="QTableWidget" name="twTacheDispo">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>581</width>
+       <height>211</height>
+      </rect>
      </property>
     </widget>
    </widget>
