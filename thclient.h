@@ -3,6 +3,7 @@
 
 #include <QThread>
 #include <QTcpSocket>
+#include <QtGui>
 
 class thclient : public QThread
 {
@@ -10,11 +11,15 @@ class thclient : public QThread
 public:
     explicit thclient(QString Nom = 0);
     bool m_bEtat;
-    
+    void run();
+    QByteArray baNom;
+    QString MonNom;
+    QTcpSocket *socketClient;
+    int code;
 signals:
-    
+    void siParam();
 public slots:
-    void slRecoieNom(QByteArray ba);
+    void slDisconnect();
 };
 
 #endif // THCLIENT_H

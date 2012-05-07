@@ -16,13 +16,12 @@ class Client : public QMainWindow
 public:
     explicit Client(QWidget *parent = 0);
     ~Client();
-    
-private slots:
+public slots:
+    void slParam();
     void on_btnConnection_clicked();
-
     void on_btnDeconnection_clicked();
 signals:
-    void siEnvoieNom(QByteArray);
+    void siDisconnect();
 private:
     Ui::Client *ui;
     thclient *m_threadPrincipal;

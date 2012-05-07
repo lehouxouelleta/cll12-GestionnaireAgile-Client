@@ -88,70 +88,35 @@
     <property name="title">
      <string>Mes Tâches</string>
     </property>
-    <widget class="QLabel" name="lblBonus">
-     <property name="geometry">
-      <rect>
-       <x>430</x>
-       <y>30</y>
-       <width>61</width>
-       <height>15</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Bonus</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="lblNomTache">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>30</y>
-       <width>121</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Nom de la Tâche</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="lblTempsRestant">
-     <property name="geometry">
-      <rect>
-       <x>310</x>
-       <y>30</y>
-       <width>111</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Temps Restant</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="lblDifficulte">
-     <property name="geometry">
-      <rect>
-       <x>230</x>
-       <y>30</y>
-       <width>61</width>
-       <height>15</height>
-      </rect>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::NoFrame</enum>
-     </property>
-     <property name="text">
-      <string>Difficulté</string>
-     </property>
-    </widget>
-    <widget class="QTableWidget" name="twMesTache">
+    <widget class="QTableWidget" name="twMesTaches">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>50</y>
+       <y>30</y>
        <width>481</width>
-       <height>211</height>
+       <height>231</height>
       </rect>
      </property>
+     <column>
+      <property name="text">
+       <string>Nom de la Tâche</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Difficulté</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Temps restant</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Bonus</string>
+      </property>
+     </column>
     </widget>
    </widget>
    <widget class="QGroupBox" name="gbTacheServeur">
@@ -166,80 +131,40 @@
     <property name="title">
      <string>Tâche Disponible</string>
     </property>
-    <widget class="QLabel" name="lblTempsDisponibilite">
-     <property name="geometry">
-      <rect>
-       <x>220</x>
-       <y>30</y>
-       <width>121</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Disponible depuis</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="lblNomTacheServeur">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>30</y>
-       <width>121</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Nom de la Tâche</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="lblTempsServeur">
-     <property name="geometry">
-      <rect>
-       <x>420</x>
-       <y>30</y>
-       <width>101</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string> Temps estimé</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="lblBonusServeur">
-     <property name="geometry">
-      <rect>
-       <x>530</x>
-       <y>30</y>
-       <width>61</width>
-       <height>15</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Bonus</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="lblDifficulteServeur">
-     <property name="geometry">
-      <rect>
-       <x>350</x>
-       <y>30</y>
-       <width>61</width>
-       <height>15</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Difficulté</string>
-     </property>
-    </widget>
     <widget class="QTableWidget" name="twTacheDispo">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>50</y>
+       <y>30</y>
        <width>581</width>
-       <height>211</height>
+       <height>231</height>
       </rect>
      </property>
+     <column>
+      <property name="text">
+       <string>Nom de la Tâche</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Disponible depuis</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Difficulté</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Temps estimé</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Bonus</string>
+      </property>
+     </column>
     </widget>
    </widget>
    <widget class="QLabel" name="lblBonusTotal">
