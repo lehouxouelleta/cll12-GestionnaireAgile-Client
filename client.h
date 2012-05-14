@@ -20,8 +20,12 @@ public slots:
     void slParam();
     void on_btnConnection_clicked();
     void on_btnDeconnection_clicked();
+    void slTache(QString tache);
 signals:
     void siDisconnect();
+private slots:
+    void on_btnSelectionner_clicked();
+
 private:
     Ui::Client *ui;
     thclient *m_threadPrincipal;

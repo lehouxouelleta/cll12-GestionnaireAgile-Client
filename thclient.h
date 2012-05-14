@@ -18,6 +18,7 @@ public:
     QString code;
 signals:
     void siParam();
+    void siTache(QString);
 public slots:
     void slDisconnect();
 };

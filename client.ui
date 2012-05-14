@@ -140,6 +140,9 @@
        <height>231</height>
       </rect>
      </property>
+     <property name="alternatingRowColors">
+      <bool>true</bool>
+     </property>
      <column>
       <property name="text">
        <string>Nom de la Tâche</string>
@@ -147,7 +150,7 @@
      </column>
      <column>
       <property name="text">
-       <string>Disponible depuis</string>
+       <string>Description</string>
       </property>
      </column>
      <column>
@@ -163,6 +166,11 @@
      <column>
       <property name="text">
        <string>Bonus</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Disponible depuis</string>
       </property>
      </column>
     </widget>

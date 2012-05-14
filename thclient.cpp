@@ -51,11 +51,21 @@ void thclient::run()
                 }
                 else
                 {
-                    if(code=="2")
+                    if(code=="\002")
                     {
+                        QString t;
 
+                        for(int i=1;i<strSplit.size();i++)
+                        {
+                            t+=strSplit.at(i);
+                            if(i<strSplit.size()-2 && i%6!=0)
+                            {
+                                t+=';';
+                            }
+                        }
 
-
+                        emit(siTache(t));
+                        code="0";
                     }
                     else
                     {
