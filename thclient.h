@@ -15,7 +15,7 @@ public:
     QByteArray baNom;
     QString MonNom;
     QTcpSocket *socketClient;
-    int code;
+    QString code;
 signals:
     void siParam();
 public slots:

@@ -7,7 +7,8 @@ thclient::thclient(QString Nom)
 void thclient::run()
 {
     QByteArray ba;
-    QString baReception;
+    QString baReception, taches;
+    QStringList strSplit;
     QTcpSocket socketClient;
     socketClient.connectToHost("172.16.8.1",60123);
     socketClient.waitForConnected();
@@ -39,20 +40,46 @@ void thclient::run()
         if(socketClient.waitForReadyRead(1000))
         {
             ba=socketClient.read(socketClient.bytesAvailable());
-        }
-        else
-        {
-            if(code!=0)
+            baReception= QString(ba);
+            strSplit= baReception.split(';');
+            code=strSplit.at(0);
+            if(code!="0")
             {
-                switch (code)
+                if(code=="1")
                 {
-                case 1:
-                    break;
+
+                }
+                else
+                {
+                    if(code=="2")
+                    {
+
+
+
+                    }
+                    else
+                    {
+                        if(code=="3")
+                        {
+
+                        }
+                        else
+                        {
+                            if(code=="4")
+                            {
+                            }
+                        }
+
+                    }
                 }
             }
         }
+        else
+        {
 
-    }while(code!=9);
+        }
+
+    }while(code!="9");
 
     baNom="9";
     baNom+=";";
@@ -64,5 +91,5 @@ void thclient::run()
 }
 void thclient::slDisconnect()
 {
-    code=9;
+    code="9";
 }
