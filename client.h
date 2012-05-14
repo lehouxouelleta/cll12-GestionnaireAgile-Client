@@ -15,6 +15,9 @@ class Client : public QMainWindow
     
 public:
     explicit Client(QWidget *parent = 0);
+    QStringList MesTaches;
+    QStringList MaTache;
+    int Ligne;
     ~Client();
 public slots:
     void slParam();
@@ -25,6 +28,11 @@ signals:
     void siDisconnect();
 private slots:
     void on_btnSelectionner_clicked();
+    void on_twTacheDispo_cellClicked(int row, int column);
+
+    void on_btnAbandonner_clicked();
+
+    void on_twMesTaches_cellClicked(int row, int column);
 
 private:
     Ui::Client *ui;

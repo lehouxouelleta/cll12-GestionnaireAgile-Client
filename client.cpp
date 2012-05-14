@@ -40,6 +40,7 @@ void Client::slTache(QString tache)
     QStringList list;
     list=tache.split("%");
     list.removeLast();
+    MesTaches = list;
     for(int i=0;i<ui->twTacheDispo->rowCount();i++)
     {
        ui->twTacheDispo->removeRow(i);
@@ -63,5 +64,40 @@ void Client::slTache(QString tache)
 
 void Client::on_btnSelectionner_clicked()
 {
+    bool veri=false;
+    QTableWidgetItem *qti;
+    for(int i=0;i< ui->twMesTaches->rowCount();i++)
+    {
+        qti=ui->twMesTaches->item(i,2);
+        if(MaTache.at(2)==qti->text())
+        {
+           veri=true;
+        }
+    }
+    if(veri==false)
+    {
+        ui->twMesTaches->setColumnCount(5);
+        ui->twMesTaches->setRowCount(ui->twMesTaches->rowCount()+1);
+        ui->twMesTaches->setItem(ui->twMesTaches->rowCount()-1,0,new QTableWidgetItem(MaTache.at(1)));
+        ui->twMesTaches->setItem(ui->twMesTaches->rowCount()-1,1,new QTableWidgetItem(MaTache.at(2)));
+        ui->twMesTaches->setItem(ui->twMesTaches->rowCount()-1,2,new QTableWidgetItem(MaTache.at(3)));
+        ui->twMesTaches->setItem(ui->twMesTaches->rowCount()-1,3,new QTableWidgetItem(MaTache.at(4)));
+        ui->twMesTaches->setItem(ui->twMesTaches->rowCount()-1,4,new QTableWidgetItem(MaTache.at(5)));
+    }
+}
 
+void Client::on_twTacheDispo_cellClicked(int row, int column)
+{
+    MaTache=MesTaches.at(row).split(";");
+    Ligne=row;
+}
+
+void Client::on_btnAbandonner_clicked()
+{
+    ui->twMesTaches->removeRow(Ligne);
+}
+
+void Client::on_twMesTaches_cellClicked(int row, int column)
+{
+    Ligne=row;
 }

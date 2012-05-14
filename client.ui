@@ -104,6 +104,11 @@
      </column>
      <column>
       <property name="text">
+       <string>Description</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
        <string>Difficulté</string>
       </property>
      </column>
@@ -142,6 +147,9 @@
      </property>
      <property name="alternatingRowColors">
       <bool>true</bool>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
      </property>
      <column>
       <property name="text">
