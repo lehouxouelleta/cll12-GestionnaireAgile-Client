@@ -66,27 +66,20 @@ void thclient::run()
 
                         emit(siTache(t));
                         code="0";
-                    }
-                    else
-                    {
-                        if(code=="3")
-                        {
-
-                        }
-                        else
-                        {
-                            if(code=="4")
-                            {
-                            }
-                        }
-
-                    }
+                    }                   
                 }
             }
         }
         else
         {
 
+
+        }
+        if(codeClient=="5")
+        {
+            socketClient.write(Tache);
+            socketClient.waitForBytesWritten();
+            codeClient="0";
         }
 
     }while(code!="9");
@@ -102,4 +95,9 @@ void thclient::run()
 void thclient::slDisconnect()
 {
     code="9";
+}
+void thclient::slTerminerTache(QString str)
+{
+    codeClient="5";
+    Tache=str.toLocal8Bit();
 }

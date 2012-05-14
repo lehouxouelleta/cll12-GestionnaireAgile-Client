@@ -16,11 +16,14 @@ public:
     QString MonNom;
     QTcpSocket *socketClient;
     QString code;
+    QString codeClient;
+    QByteArray Tache;
 signals:
     void siParam();
     void siTache(QString);
 public slots:
     void slDisconnect();
+    void slTerminerTache(QString);
 };
 
 #endif // THCLIENT_H

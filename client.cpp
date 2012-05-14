@@ -22,6 +22,7 @@ void Client::on_btnConnection_clicked()
     connect(m_threadPrincipal,SIGNAL(siParam()),this,SLOT(slParam()));
     connect(this,SIGNAL(siDisconnect()),m_threadPrincipal,SLOT(slDisconnect()));
     connect(m_threadPrincipal,SIGNAL(siTache(QString)),this,SLOT(slTache(QString)));
+    connect(this,SIGNAL(siTerminerTache(QString)),m_threadPrincipal,SLOT(slTerminerTache(QString)));
     m_threadPrincipal->start();
 }
 
@@ -100,4 +101,15 @@ void Client::on_btnAbandonner_clicked()
 void Client::on_twMesTaches_cellClicked(int row, int column)
 {
     Ligne=row;
+}
+
+void Client::on_btnTacheTerminer_clicked()
+{
+    QString Envoie;
+    MaTache=MesTaches.at(Ligne).split(";");
+    ui->twMesTaches->removeRow(Ligne);
+    ui->twMesTaches->setRowCount(ui->twMesTaches->rowCount()-1);
+    Envoie+="5;";
+    Envoie+=MaTache.at(0);
+    emit(siTerminerTache(Envoie));
 }

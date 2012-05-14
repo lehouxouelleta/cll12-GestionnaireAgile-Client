@@ -26,6 +26,7 @@ public slots:
     void slTache(QString tache);
 signals:
     void siDisconnect();
+    void siTerminerTache(QString);
 private slots:
     void on_btnSelectionner_clicked();
     void on_twTacheDispo_cellClicked(int row, int column);
@@ -33,6 +34,8 @@ private slots:
     void on_btnAbandonner_clicked();
 
     void on_twMesTaches_cellClicked(int row, int column);
+
+    void on_btnTacheTerminer_clicked();
 
 private:
     Ui::Client *ui;
