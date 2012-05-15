@@ -117,7 +117,7 @@
      </column>
      <column>
       <property name="text">
-       <string>Temps restant</string>
+       <string>Temps estimé</string>
       </property>
      </column>
      <column>
@@ -177,11 +177,6 @@
      <column>
       <property name="text">
        <string>Bonus</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Disponible depuis</string>
       </property>
      </column>
     </widget>

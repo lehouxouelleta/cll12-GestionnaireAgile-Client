@@ -21,6 +21,7 @@ public:
 signals:
     void siParam();
     void siTache(QString);
+    void siDeconnection();
 public slots:
     void slDisconnect();
     void slTerminerTache(QString);

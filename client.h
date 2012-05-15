@@ -19,15 +19,18 @@ public:
     QStringList MaTache;
     int Ligne;
     int TacheTermine;
+    int BonusTotal;
     ~Client();
 public slots:
     void slParam();
     void on_btnConnection_clicked();
     void on_btnDeconnection_clicked();
     void slTache(QString tache);
+    void slDeconnection();
 signals:
     void siDisconnect();
     void siTerminerTache(QString);
+
 private slots:
     void on_btnSelectionner_clicked();
     void on_twTacheDispo_cellClicked(int row, int column);
