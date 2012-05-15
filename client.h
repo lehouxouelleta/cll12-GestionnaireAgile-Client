@@ -18,6 +18,7 @@ public:
     QStringList MesTaches;
     QStringList MaTache;
     int Ligne;
+    int TacheTermine;
     ~Client();
 public slots:
     void slParam();

@@ -97,6 +97,9 @@
        <height>231</height>
       </rect>
      </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
      <column>
       <property name="text">
        <string>Nom de la Tâche</string>

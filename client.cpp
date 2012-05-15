@@ -42,25 +42,28 @@ void Client::slTache(QString tache)
     list=tache.split("%");
     list.removeLast();
     MesTaches = list;
-    for(int i=0;i<ui->twTacheDispo->rowCount();i++)
+    if(MesTaches.count()!=ui->twTacheDispo->rowCount())
     {
-       ui->twTacheDispo->removeRow(i);
-    }
-    ui->twTacheDispo->setRowCount(0);
-    ui->twTacheDispo->setColumnCount(5);
-    for(int i=0;i<list.size();i++)
-    {
-        QStringList descTache;
-        descTache=list.at(i).split(";");
-        ui->twTacheDispo->setRowCount(ui->twTacheDispo->rowCount()+1);
-        ui->twTacheDispo->setItem(ui->twTacheDispo->rowCount()-1,0,new QTableWidgetItem(descTache.at(1)));
-        ui->twTacheDispo->setItem(ui->twTacheDispo->rowCount()-1,1,new QTableWidgetItem(descTache.at(2)));
-        ui->twTacheDispo->setItem(ui->twTacheDispo->rowCount()-1,2,new QTableWidgetItem(descTache.at(3)));
-        ui->twTacheDispo->setItem(ui->twTacheDispo->rowCount()-1,3,new QTableWidgetItem(descTache.at(4)));
-        ui->twTacheDispo->setItem(ui->twTacheDispo->rowCount()-1,4,new QTableWidgetItem(descTache.at(5)));
-    }
+        for(int i=0;i<ui->twTacheDispo->rowCount();i++)
+        {
+           ui->twTacheDispo->removeRow(i);
+        }
+        ui->twTacheDispo->setRowCount(0);
+        ui->twTacheDispo->setColumnCount(5);
+        for(int i=0;i<list.size();i++)
+        {
+            QStringList descTache;
+            descTache=list.at(i).split(";");
+            ui->twTacheDispo->setRowCount(ui->twTacheDispo->rowCount()+1);
+            ui->twTacheDispo->setItem(ui->twTacheDispo->rowCount()-1,0,new QTableWidgetItem(descTache.at(1)));
+            ui->twTacheDispo->setItem(ui->twTacheDispo->rowCount()-1,1,new QTableWidgetItem(descTache.at(2)));
+            ui->twTacheDispo->setItem(ui->twTacheDispo->rowCount()-1,2,new QTableWidgetItem(descTache.at(3)));
+            ui->twTacheDispo->setItem(ui->twTacheDispo->rowCount()-1,3,new QTableWidgetItem(descTache.at(4)));
+            ui->twTacheDispo->setItem(ui->twTacheDispo->rowCount()-1,4,new QTableWidgetItem(descTache.at(5)));
+        }
 
-    ui->twTacheDispo->resizeColumnsToContents();
+        ui->twTacheDispo->resizeColumnsToContents();
+    }
 }
 
 void Client::on_btnSelectionner_clicked()
@@ -89,6 +92,7 @@ void Client::on_btnSelectionner_clicked()
 
 void Client::on_twTacheDispo_cellClicked(int row, int column)
 {
+    Ligne=0;
     MaTache=MesTaches.at(row).split(";");
     Ligne=row;
 }
@@ -100,16 +104,33 @@ void Client::on_btnAbandonner_clicked()
 
 void Client::on_twMesTaches_cellClicked(int row, int column)
 {
+    Ligne=0;
     Ligne=row;
 }
 
 void Client::on_btnTacheTerminer_clicked()
 {
     QString Envoie;
-    MaTache=MesTaches.at(Ligne).split(";");
-    ui->twMesTaches->removeRow(Ligne);
-    ui->twMesTaches->setRowCount(ui->twMesTaches->rowCount()-1);
+    bool veri=false;
     Envoie+="5;";
-    Envoie+=MaTache.at(0);
-    emit(siTerminerTache(Envoie));
+    QString Dispo,sMaTache;
+    sMaTache=ui->twMesTaches->item(Ligne,0)->text();
+    for(int i=0;i< ui->twTacheDispo->rowCount();i++)
+    {
+        Dispo=ui->twTacheDispo->item(i,0)->text();
+        if(sMaTache==Dispo)
+        {
+           veri=true;
+           Envoie+=i;
+        }
+    }
+    if(veri==true)
+    {
+        MaTache=MesTaches.at(Ligne).split(";");
+        ui->twMesTaches->removeRow(Ligne);
+        ui->twMesTaches->setRowCount(ui->twMesTaches->rowCount()-1);
+        TacheTermine=TacheTermine+1;
+        ui->txtTacheTotal->setText(QString("%1").arg(TacheTermine));
+        emit(siTerminerTache(Envoie));
+    }
 }
