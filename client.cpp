@@ -10,6 +10,9 @@ Client::Client(QWidget *parent) :
     ui->twMesTaches->resizeColumnsToContents();
     BonusTotal=0;
     ui->btnDeconnection->setEnabled(false);
+    ui->btnSelectionner->setEnabled(false);
+    ui->btnAbandonner->setEnabled(false);
+    ui->btnTacheTerminer->setEnabled(false);
 }
 
 Client::~Client()
@@ -26,6 +29,8 @@ void Client::on_btnConnection_clicked()
     connect(m_threadPrincipal,SIGNAL(siTache(QString)),this,SLOT(slTache(QString)));
     connect(this,SIGNAL(siTerminerTache(QString)),m_threadPrincipal,SLOT(slTerminerTache(QString)));
     connect(m_threadPrincipal,SIGNAL(siDeconnection()),this,SLOT(slDeconnection()));
+    connect(this,SIGNAL(siSelectionnerTache(QString)),m_threadPrincipal,SLOT(slSelectionnerTache(QString)));
+    connect(this,SIGNAL(siAbandonTache(QString)),m_threadPrincipal,SLOT(slAbandonnerTache(QString)));
     m_threadPrincipal->start();
 }
 
@@ -91,23 +96,35 @@ void Client::on_btnSelectionner_clicked()
         ui->twMesTaches->setItem(ui->twMesTaches->rowCount()-1,2,new QTableWidgetItem(MaTache.at(3)));
         ui->twMesTaches->setItem(ui->twMesTaches->rowCount()-1,3,new QTableWidgetItem(MaTache.at(4)));
         ui->twMesTaches->setItem(ui->twMesTaches->rowCount()-1,4,new QTableWidgetItem(MaTache.at(5)));
+        ui->btnSelectionner->setEnabled(false);
     }
+    ui->twTacheDispo->setEnabled(false);
+    emit(siSelectionnerTache(tacheChoisi));
 }
 
 void Client::on_twTacheDispo_cellClicked(int row, int column)
 {
     MaTache=MesTaches.at(row).split(";");
+    tacheChoisi=QString("%1").arg(row);
+    ui->btnSelectionner->setEnabled(true);
 }
 
 void Client::on_btnAbandonner_clicked()
 {
     ui->twMesTaches->removeRow(Ligne);
+    ui->btnSelectionner->setEnabled(true);
+    ui->btnTacheTerminer->setEnabled(false);
+    ui->btnAbandonner->setEnabled(false);
+    ui->twTacheDispo->setEnabled(true);
+    emit(siAbandonTache(tacheChoisi));
 }
 
 void Client::on_twMesTaches_cellClicked(int row, int column)
 {
     Ligne=0;
     Ligne=row;
+    ui->btnAbandonner->setEnabled(true);
+    ui->btnTacheTerminer->setEnabled(true);
 }
 
 void Client::on_btnTacheTerminer_clicked()
@@ -135,11 +152,16 @@ void Client::on_btnTacheTerminer_clicked()
         ui->txtTacheTotal->setText(QString("%1").arg(TacheTermine));
         BonusTotal+=MaTache.at(5).toInt();
         ui->txtBonusTotal->setText(QString("%1").arg(BonusTotal));
+        ui->twTacheDispo->setEnabled(true);
         emit(siTerminerTache(Envoie));
     }
 }
 void Client::slDeconnection()
 {
+    ui->twMesTaches->clearContents();
+    ui->twMesTaches->setRowCount(0);
+    ui->twTacheDispo->clearContents();
+    ui->twTacheDispo->setRowCount(0);
     ui->txtNomUtilisateur->setText("");
     ui->btnConnection->setEnabled(true);
     ui->btnDeconnection->setEnabled(false);

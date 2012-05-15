@@ -17,6 +17,7 @@ public:
     explicit Client(QWidget *parent = 0);
     QStringList MesTaches;
     QStringList MaTache;
+    QString tacheChoisi;
     int Ligne;
     int TacheTermine;
     int BonusTotal;
@@ -30,6 +31,8 @@ public slots:
 signals:
     void siDisconnect();
     void siTerminerTache(QString);
+    void siSelectionnerTache(QString);
+    void siAbandonTache(QString);
 
 private slots:
     void on_btnSelectionner_clicked();

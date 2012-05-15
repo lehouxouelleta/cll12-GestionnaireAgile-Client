@@ -18,6 +18,8 @@ public:
     QString code;
     QString codeClient;
     QByteArray Tache;
+    QString tacheChoisi;
+    QString tacheAbandonner;
 signals:
     void siParam();
     void siTache(QString);
@@ -25,6 +27,8 @@ signals:
 public slots:
     void slDisconnect();
     void slTerminerTache(QString);
+    void slSelectionnerTache(QString);
+    void slAbandonnerTache(QString);
 };
 
 #endif // THCLIENT_H

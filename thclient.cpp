@@ -60,11 +60,19 @@ void thclient::run()
                     }
             }
         }
-        if(codeClient=="5")
+        if(codeClient=="5")//J'envoie au serveur quel tâche j'ai complété
         {
             socketClient.write(Tache);
             socketClient.waitForBytesWritten();
             codeClient="0";
+        }
+        if(codeClient=="6")//je choisi une tache et je lenvoie au serveur
+        {
+            socketClient.write(tacheChoisi.toLocal8Bit());
+        }
+        if(codeClient=="7")//L'abandon d'une tâche
+        {
+            socketClient.write(tacheAbandonner.toLocal8Bit());
         }
 
     }while(code!="9");
@@ -86,4 +94,16 @@ void thclient::slTerminerTache(QString str)
 {
     codeClient="5";
     Tache=str.toLocal8Bit();
+}
+void thclient::slSelectionnerTache(QString tachechoisi)
+{
+    codeClient="6";
+    tacheChoisi="6;";
+    tacheChoisi+=tachechoisi;
+}
+void thclient::slAbandonnerTache(QString tacheabandonner)
+{
+    codeClient="7";
+    tacheAbandonner="7;";
+    tacheAbandonner+=tacheabandonner;
 }
