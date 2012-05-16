@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Connection</string>
+     <string>Connexion</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="txtNomUtilisateur">
@@ -86,7 +86,7 @@
      </rect>
     </property>
     <property name="title">
-     <string>Mes Tâches</string>
+     <string>Ma Tâche</string>
     </property>
     <widget class="QTableWidget" name="twMesTaches">
      <property name="geometry">
@@ -208,7 +208,7 @@
    <widget class="QLineEdit" name="txtBonusTotal">
     <property name="geometry">
      <rect>
-      <x>860</x>
+      <x>880</x>
       <y>370</y>
       <width>113</width>
       <height>21</height>
@@ -220,18 +220,18 @@
      <rect>
       <x>720</x>
       <y>400</y>
-      <width>141</width>
+      <width>161</width>
       <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>Tâche total exécuté</string>
+     <string>Tâches totales exécutés</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="txtTacheTotal">
     <property name="geometry">
      <rect>
-      <x>860</x>
+      <x>880</x>
       <y>400</y>
       <width>113</width>
       <height>21</height>
@@ -261,7 +261,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Deconnection</string>
+     <string>Déconnection</string>
     </property>
    </widget>
   </widget>
