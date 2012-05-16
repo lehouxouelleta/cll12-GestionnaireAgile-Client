@@ -31,11 +31,13 @@ void Client::on_btnConnection_clicked()
     connect(m_threadPrincipal,SIGNAL(siDeconnection()),this,SLOT(slDeconnection()));
     connect(this,SIGNAL(siSelectionnerTache(QString)),m_threadPrincipal,SLOT(slSelectionnerTache(QString)));
     connect(this,SIGNAL(siAbandonTache(QString)),m_threadPrincipal,SLOT(slAbandonnerTache(QString)));
+    connect(m_threadPrincipal,SIGNAL(siSelectionValide()),this,SLOT(slSelectionValide()));
     m_threadPrincipal->start();
 }
 
 void Client::on_btnDeconnection_clicked()
 {
+    ui->twTacheDispo->setEnabled(true);
     m_threadPrincipal->m_bEtat = false;
     emit(siDisconnect());
 }
@@ -58,7 +60,7 @@ void Client::slTache(QString tache)
            ui->twTacheDispo->removeRow(i);
         }
         ui->twTacheDispo->setRowCount(0);
-        ui->twTacheDispo->setColumnCount(5);
+        ui->twTacheDispo->setColumnCount(6);
         for(int i=0;i<list.size();i++)
         {
             QStringList descTache;
@@ -69,13 +71,41 @@ void Client::slTache(QString tache)
             ui->twTacheDispo->setItem(ui->twTacheDispo->rowCount()-1,2,new QTableWidgetItem(descTache.at(3)));
             ui->twTacheDispo->setItem(ui->twTacheDispo->rowCount()-1,3,new QTableWidgetItem(descTache.at(4)));
             ui->twTacheDispo->setItem(ui->twTacheDispo->rowCount()-1,4,new QTableWidgetItem(descTache.at(5)));
+            ui->twTacheDispo->setItem(ui->twTacheDispo->rowCount()-1,5,new QTableWidgetItem(descTache.at(6)));
         }
 
         ui->twTacheDispo->resizeColumnsToContents();
     }
+    else
+    {
+        for(int i=0;i<list.size();i++)
+        {
+            QStringList descTache;
+            descTache=list.at(i).split(";");
+            if(descTache.at(6)!=ui->twTacheDispo->item(i,5)->text())
+            {
+                ui->twTacheDispo->setItem(i,5,new QTableWidgetItem(descTache.at(6)));
+            }
+        }
+
+    }
 }
 
 void Client::on_btnSelectionner_clicked()
+{
+    if(MaTache.at(6)=="1")
+    {
+        QMessageBox msgBox;
+        msgBox.setText("Cette tâche est prise par un autre employé.");
+        msgBox.exec();
+    }
+    else
+    {
+        emit(siSelectionnerTache(tacheChoisi));
+    }
+    ui->twTacheDispo->clearSelection();
+}
+void Client::slSelectionValide()
 {
     bool veri=false;
     QTableWidgetItem *qti;
@@ -99,7 +129,6 @@ void Client::on_btnSelectionner_clicked()
         ui->btnSelectionner->setEnabled(false);
     }
     ui->twTacheDispo->setEnabled(false);
-    emit(siSelectionnerTache(tacheChoisi));
 }
 
 void Client::on_twTacheDispo_cellClicked(int row, int column)
@@ -115,6 +144,7 @@ void Client::on_btnAbandonner_clicked()
     ui->btnSelectionner->setEnabled(true);
     ui->btnTacheTerminer->setEnabled(false);
     ui->btnAbandonner->setEnabled(false);
+    ui->btnSelectionner->setEnabled(false);
     ui->twTacheDispo->setEnabled(true);
     emit(siAbandonTache(tacheChoisi));
 }
@@ -153,6 +183,8 @@ void Client::on_btnTacheTerminer_clicked()
         BonusTotal+=MaTache.at(5).toInt();
         ui->txtBonusTotal->setText(QString("%1").arg(BonusTotal));
         ui->twTacheDispo->setEnabled(true);
+        ui->btnAbandonner->setEnabled(false);
+        ui->btnTacheTerminer->setEnabled(false);
         emit(siTerminerTache(Envoie));
     }
 }

@@ -20,10 +20,12 @@ public:
     QByteArray Tache;
     QString tacheChoisi;
     QString tacheAbandonner;
+    QString codeServeur;
 signals:
     void siParam();
     void siTache(QString);
     void siDeconnection();
+    void siSelectionValide();
 public slots:
     void slDisconnect();
     void slTerminerTache(QString);

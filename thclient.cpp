@@ -22,6 +22,7 @@ void thclient::run()
     socketClient.waitForBytesWritten();
     socketClient.waitForReadyRead();
     baReception = socketClient.read(socketClient.bytesAvailable());
+    codeServeur="0";
     if(baReception=="#")//le # signifie un ack donc, il a reçue ma connection
     {
         emit(siParam());
@@ -43,7 +44,7 @@ void thclient::run()
                         for(int i=1;i<strSplit.size();i++)
                         {
                             t+=strSplit.at(i);
-                            if(i<strSplit.size()-2 && i%6!=0)
+                            if(i<strSplit.size()-2 && i%7!=0)
                             {
                                 t+=';';
                             }
@@ -55,7 +56,7 @@ void thclient::run()
                     {
                         if(code=="8")
                         {
-                            code="9";
+                            codeServeur="9";
                         }
                     }
             }
@@ -68,14 +69,19 @@ void thclient::run()
         }
         if(codeClient=="6")//je choisi une tache et je lenvoie au serveur
         {
-            socketClient.write(tacheChoisi.toLocal8Bit());
+            socketClient.write(Tache);
+            socketClient.waitForBytesWritten();
+            codeClient="0";
+            emit(siSelectionValide());
         }
         if(codeClient=="7")//L'abandon d'une tâche
         {
-            socketClient.write(tacheAbandonner.toLocal8Bit());
+            socketClient.write(Tache);
+            socketClient.waitForBytesWritten();
+            codeClient="0";
         }
 
-    }while(code!="9");
+    }while(codeServeur!="9");
 
     baNom="9";
     baNom+=";";
@@ -88,7 +94,7 @@ void thclient::run()
 }
 void thclient::slDisconnect()
 {
-    code="9";
+    codeServeur="9";
 }
 void thclient::slTerminerTache(QString str)
 {
@@ -98,12 +104,10 @@ void thclient::slTerminerTache(QString str)
 void thclient::slSelectionnerTache(QString tachechoisi)
 {
     codeClient="6";
-    tacheChoisi="6;";
-    tacheChoisi+=tachechoisi;
+    Tache=QString("6").toLocal8Bit()+";"+tachechoisi.toLocal8Bit();
 }
 void thclient::slAbandonnerTache(QString tacheabandonner)
 {
     codeClient="7";
-    tacheAbandonner="7;";
-    tacheAbandonner+=tacheabandonner;
+    Tache=QString("7").toLocal8Bit()+";"+tacheabandonner.toLocal8Bit();
 }

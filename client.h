@@ -28,6 +28,7 @@ public slots:
     void on_btnDeconnection_clicked();
     void slTache(QString tache);
     void slDeconnection();
+    void slSelectionValide();
 signals:
     void siDisconnect();
     void siTerminerTache(QString);
